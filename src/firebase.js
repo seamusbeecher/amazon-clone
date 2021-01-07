@@ -1,5 +1,6 @@
 import firebase from 'firebase';
 
+// Firebase "amazon-clone" API access keys
 const firebaseConfig = {
     apiKey: "AIzaSyDeUYxcCss4U4fXNYzKcGoBChemmPO1l1c",
     authDomain: "clone-409d0.firebaseapp.com",
@@ -11,8 +12,11 @@ const firebaseConfig = {
 
   const firebaseApp = firebase.initializeApp(firebaseConfig);
 
+  // Initalize the database
   const db = firebaseApp.firestore();
 
+  // User authentication 
   const auth = firebase.auth();
 
+  // Export to be able to use anywhere
   export { db, auth };

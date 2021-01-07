@@ -1,9 +1,10 @@
 const functions = require('firebase-functions');
 const express = require('express');
 const cors = require('cors');
+// Stripe secret key
 const stripe = require('stripe')('sk_test_51I4VOLAUqL3nWbrfDJ81DxV5i01Yr8uHNm61RUpJHMhDOc3ADjqzLDA1FDMboQXLZkP2RUtCl8Yhlrr7IFD7OGLQ00upsmgRaw');
 
-// -- API
+// -- API Cloud Function 
 
 // -- App config
 const app = express();
@@ -14,8 +15,6 @@ app.use(express.json());
 
 // -- API routes
 // EXAMPLE: app.get('/seamus', (request, responce) => responce.status(200).send('Seamus API'));
-
-app.get('/', (request, responce) => responce.status(200).send('Seamus API'));
 
 app.post('/payments/create', async (request, responce) => {
     const total = request.query.total;

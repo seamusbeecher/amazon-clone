@@ -4,6 +4,7 @@ import { useStateValue } from '../StateProvider';
 
 function CheckoutProduct({id, image, title, price, rating, hideButton}) {
 
+    // Access to data layer
     const [{basket}, dispatch] = useStateValue();
 
     const removeFromBasket = () => {

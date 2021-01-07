@@ -1,36 +1,37 @@
 import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import Home from './components/Home';
 import Checkout from './components/Checkout';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Payment from './components/Payment';
+import Orders from './components/Orders';
 import Login from './components/Login';
 import { auth } from './firebase.js';
 import { useStateValue } from './StateProvider.js';
-import Payment from './components/Payment';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
-import Orders from './components/Orders';
 
+// Stripe publishable key
 const promise = loadStripe('pk_test_51I4VOLAUqL3nWbrfcWDSznQNc0qIiCoChHobRZ5Q50LdUKJJWrYCkxPw3cb0VU175RizqYMQRnGgp3dyrYzEbbiM00oQexu0V6');
 
 function App() {
 
+  // Access to data layer
   const [{ }, dispatch] = useStateValue();
 
-  // will only run one time once the app is loaded -- []
+  // Will only run one time once the app is loaded -- []
   useEffect(() => {
     auth.onAuthStateChanged(authUser => {
       console.log('USER IS >>> ', authUser);
-
       if (authUser) {
-        //user just or was login
+        // User just or was login
         dispatch({
           type: 'SET-USER',
           user: authUser
         })
       } else {
-        //user loged out
+        // User loged out
         dispatch({
           type: 'SET-USER',
           user: null
@@ -40,12 +41,11 @@ function App() {
   }, [])
 
   return (
-
     <Router>
       <div className="App">
 
         <Switch>
-        <Route path="/login">
+          <Route path="/login">
             <Login />
           </Route>
 
@@ -71,10 +71,8 @@ function App() {
             <Home />
           </Route>
         </Switch>
-        
       </div>
     </Router>
-    
   );
 }
 

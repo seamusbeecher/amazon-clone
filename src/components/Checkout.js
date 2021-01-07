@@ -7,6 +7,7 @@ import { userInfo } from 'os';
 
 function Checkout() {
 
+    // Access to data layer
     const [{ basket, user }] = useStateValue();
 
     // console.log('Items in the basket', basket);
@@ -22,13 +23,13 @@ function Checkout() {
                     <h2 className='checkout-title'> Your Shopping Basket </h2>
 
                     {basket.map(item => (
-                     <CheckoutProduct 
-                    id={item.id}
-                    title={item.title}
-                    image={item.image}
-                    price={item.price} 
-                    rating={item.rating}
-                    />
+                        <CheckoutProduct 
+                            id={item.id}
+                            title={item.title}
+                            image={item.image}
+                            price={item.price} 
+                            rating={item.rating}
+                        />
                     ))}
                 </div>
             </div>

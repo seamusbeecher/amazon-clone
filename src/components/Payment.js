@@ -11,18 +11,23 @@ import { db } from '../firebase';
 
 function Payment() {
 
+    // Access to data layer
     const [{ basket, user}, dispatch] = useStateValue();
+    // useHistory Hook
     const history = useHistory();
 
+    // Stripe access
     const stripe = useStripe();
     const elements = useElements();
 
+    // Processing payment variables
     const [error, setError] = useState(null);
     const [disabled, setDisabled] = useState(true);
     const [succeeded, setSucceeded] = useState(false);
     const [processing, setProcessing] = useState('');
     const [clientSecret, setClientSecret] = useState(true);
 
+    // 
     useEffect(() => {
         //Generate stripe secret, allows to charge customer
         const getClientSecret = async () => {
@@ -33,7 +38,6 @@ function Payment() {
             });
             setClientSecret(response.data.clientSecret)
         }
-
         getClientSecret();
     }, [basket])
 
@@ -43,14 +47,12 @@ function Payment() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         setProcessing(true);
-
         const payload = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: elements.getElement(CardElement)
             }
         }).then(({ paymentIntent }) => {
             //paymentIntent = payment confirmation
-
             // Push into database
             db.collection('users')
             .doc(user.uid)
@@ -149,11 +151,9 @@ function Payment() {
 
                             {/* ERROR */}
                             {error && <div>{error}</div>}
-
                         </form>
                     </div>
                 </div>
-
             </div>
         </div>
     )

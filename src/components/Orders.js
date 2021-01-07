@@ -6,11 +6,13 @@ import Order from './Order';
 
 function Orders() {
 
+    // Access to data layer
     const [{ basket, user }, dispatch] = useStateValue();
+    // useState Hook -- Array of orders
     const [orders, setOrders] = useState([]);
 
+    // useEffect Hook -- Push order to database
     useEffect(() => {
-
         if (user) {
             db.collection('users')
             .doc(user.uid)
@@ -30,9 +32,9 @@ function Orders() {
     return (
         <div className='orders'>
             <h1>Your Orders</h1>
-
             <div className='orders-order'>
                 {orders.map(order => (
+                    // Order Component 
                     <Order order={order} />
                 ))}
             </div>

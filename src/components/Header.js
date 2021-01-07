@@ -8,8 +8,10 @@ import { auth } from '../firebase';
 
 function Header() {
 
+    // Access to data layer
     const [{ basket, user }, dispatch] = useStateValue();
 
+    // If sign out shown -- Sign out of firebase
     const handleAuthentication = () => {
         if (user) {
             auth.signOut();
@@ -19,25 +21,29 @@ function Header() {
     return (
         <div className='header'>
 
+            {/* Amazon Logo -- Link to home page "/" */}
             <Link to='/'>
                 <img className='header-logo' src='http://pngimg.com/uploads/amazon/amazon_PNG11.png' alt=''/>
             </Link>
             
-
+            {/* Search Bar -- Material UI Search Icon */}
             <div className='header-search'>
                 <input className='header-searchInput' type='text'/>
-
                 <SearchIcon className='header-searchIcon'/>
             </div>
 
+            {/* Nav Bar */}
             <div className='header-nav'>
+
+                {/* Login Button -- Link to login page if no user */}
                 <Link to={!user && '/login'}>
-                    <div  onClick={handleAuthentication} className='header-option'>
+                    <div className='header-option' onClick={handleAuthentication}>
                         <span className='header-option-lineone'>Hello {!user ? 'Guest' : user.email}</span>
                         <span className='header-option-linetwo'> {user ? 'Sign Out' : 'Sign In'} </span>
                     </div>
                 </Link>
 
+                {/* Order Button -- Link to orders page */}
                 <Link to='/orders'>
                     <div className='header-option'>
                         <span className='header-option-lineone'>Returns</span>
@@ -45,12 +51,14 @@ function Header() {
                     </div>
                 </Link>
                 
-
+                {/* Prime Button -- NOT ACTIVE */}
                 <div className='header-option'>
                     <span className='header-option-lineone'>Your</span>
                     <span className='header-option-linetwo'>Prime</span>
                 </div>
 
+                {/* Checkout Button -- Link to checkout page, 
+                Material UI Shopping Basket Icon, number of items in basket */}
                 <Link to='/checkout'>
                     <div className='header-optionBasket'>
                         <ShoppingBasketIcon />
@@ -59,10 +67,7 @@ function Header() {
                         </span>
                     </div>
                 </Link>
-                
             </div>
-
-            
         </div>
     )
 }

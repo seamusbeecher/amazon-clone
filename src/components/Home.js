@@ -5,11 +5,15 @@ import Product from './Product';
 function Home() {
     return (
         <div className='home'>
+
+            {/* Background image of home page  */}
             <div className='home-container'>
                 <img className='home-image' src='https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg' alt=''/>
             </div>
 
             <div className='home-row'>
+
+                {/* Product component -- Flexbox CSS */}
                 <Product 
                     id="123123123"
                     title="The Lean Startup" 
@@ -57,7 +61,6 @@ function Home() {
                     price={ 399.99 } 
                     image="https://cdn.shopify.com/s/files/1/0411/9757/products/OptimistPrymeGlassDeck_e705e7b2-b132-465a-8f14-685262701a7d.jpg?v=1575931601"
                     rating={ 3 }/>
-                
             </div>
         </div>
     )

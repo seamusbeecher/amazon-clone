@@ -5,14 +5,15 @@ import { auth } from '../firebase.js'
 
 function Login() {
 
+    // useHistory Hook
     const history = useHistory();
+    // useState Hook
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    // Login user
+    // Login user -- Push to the home page with useHistory Hook -- Firebase
     const signIn = e => {
-        e.preventDefault(); //stop refreshing page
-
+        e.preventDefault(); // Stop refreshing page
         auth.signInWithEmailAndPassword(email, password)
         .then((auth) => {
             history.push('/')
@@ -20,10 +21,9 @@ function Login() {
         .catch(error => alert(error.message))
     }
 
-    // Create new user
+    // Create new user -- Push to the home page with useHistory Hook -- Firebase
     const register = e => {
-        e.preventDefault();
-
+        e.preventDefault(); // Stop refreshing page
         auth.createUserWithEmailAndPassword(email, password)
         .then((auth) => {
             console.log(auth);
@@ -36,28 +36,20 @@ function Login() {
 
     return (
         <div className='login'>
+
+            {/* Amazon Logo */}
             <Link to='/'>
                 <img className='login-logo' src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png' alt='' />
             </Link>
 
             <div className='login-container' >
                 <h1>Sign-In</h1>
-
+                
                 <form>
                     <h5>Email</h5>
-                    <input 
-                        type='text' 
-                        value={email} 
-                        onChange={e => setEmail(e.target.value)}
-                    />
-
+                    <input type='text' value={email} onChange={e => setEmail(e.target.value)}/>
                     <h5>Password</h5>
-                    <input 
-                        type='password' 
-                        value={password}
-                        onChange={e => setPassword(e.target.value)}
-                    />
-
+                    <input type='password' value={password} onChange={e => setPassword(e.target.value)}/>
                     <button className='login-signin-button' type='submit' onClick={signIn}>Sign In</button>
                 </form>
 
@@ -66,9 +58,7 @@ function Login() {
                 </p>
 
                 <button className='login-register-button' onClick={register}>Create Your Amazon Account</button>
-
             </div>
-            
         </div>
     )
 }

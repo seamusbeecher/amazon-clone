@@ -7,7 +7,9 @@ import { useHistory} from 'react-router-dom';
 
 function Subtotal() {
 
+    // useHistory Hook
     const history = useHistory();
+    // Access to data layer
     const [{ basket }] = useStateValue();
 
     return (

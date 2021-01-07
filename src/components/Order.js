@@ -8,10 +8,12 @@ function Order({ order }) {
     return (
         <div className='order'>
             <h2>Order</h2>
+            {/* Moment for time stamps */}
             <p>{moment.unix(order.data.created).format('MMMM Do YYYY, h:mma')}</p>
             <p className='order-id'>
                 <small>{order.id}</small>
             </p>
+
             {order.data.basket.map(item => (
                 <CheckoutProduct 
                 id={item.id}
@@ -22,6 +24,8 @@ function Order({ order }) {
                 hideButton
                 />
             ))}
+
+            {/* React format -- Adding total amount */}
             <CurrencyFormat
                 renderText={(value) => (
                     <h3 className='order-total'>Order Total: {value}</h3>

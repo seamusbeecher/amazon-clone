@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
+import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { StateProvider } from './StateProvider';
 import reducer, { initialState } from './Reducer';
 
+// Wrap app with StateProvider to allow data layer throughout app
 ReactDOM.render(
   <React.StrictMode>
     <StateProvider initialState={initialState} reducer={reducer}>
