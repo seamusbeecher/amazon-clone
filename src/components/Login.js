@@ -55,6 +55,7 @@ function Login() {
 
                 <p>
                     By sign-in you agree to Amazon Fake Clone's Conditions of Use & Sale. Please see our Privacy Notice, our Cookies Notice and our Interest-Based Ads Notice.
+                    This website is for development practice ONLY, any information provided will not be used for any development useage in any way.
                 </p>
 
                 <button className='login-register-button' onClick={register}>Create Your Amazon Account</button>

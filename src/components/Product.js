@@ -11,6 +11,7 @@ function Product({ id, title, image, price, rating }) {
 
     const addToBasket = () => {
         // Dispatch item into data layer
+        alert('Added Item');
         dispatch ({
             type: 'ADD-TO-BASKET',
             item: {
