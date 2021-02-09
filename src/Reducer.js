@@ -53,6 +53,12 @@ const reducer = (state, action) => {
                 user: action.user
             }
 
+        case 'SEARCH-INPUT':
+            return {
+                ...state,
+                input: action.input
+            }
+
         default:
             return state;
     }

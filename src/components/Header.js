@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './Header.css';
 import { Link } from 'react-router-dom';
 import { useStateValue } from '../StateProvider';
@@ -9,12 +9,27 @@ import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 function Header() {
     // Access to data layer
     const [{ basket, user }, dispatch] = useStateValue();
+    const searchInputRef = useRef();
 
     // If sign out shown -- Sign out of firebase
     const handleAuthentication = () => {
         if (user) {
             auth.signOut();
         }
+    }
+
+    // dispatch the search to the datalayer than pull into the home component
+    const handleSearch = () => {
+        const searchInput = searchInputRef.current.value;
+        if (searchInput === '') {
+            return
+        }
+        dispatch({
+            type: 'SEARCH-INPUT',
+            input: searchInput
+        })
+       searchInputRef.current.value = null;
+
     }
 
     return (
@@ -26,9 +41,9 @@ function Header() {
             </Link>
             
             {/* Search Bar -- Material UI Search Icon Not Functional*/}
-            <div className='header-search'>
-                <input className='header-searchInput' type='text' placeholder='Currently not functional'/>
-                <SearchIcon className='header-searchIcon'/>
+            <div className='header-search' onClick={handleSearch}>
+                <input className='header-searchInput' type='text' placeholder='Search for Item' ref={searchInputRef}/>
+                <SearchIcon className='header-searchIcon' />
             </div>
 
             {/* Nav Bar */}

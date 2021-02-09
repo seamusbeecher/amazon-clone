@@ -1,6 +1,7 @@
 import firebase from 'firebase';
 
 // Firebase "amazon-clone" API access keys
+// This is for my test firestore database 
 const firebaseConfig = {
     apiKey: "AIzaSyDeUYxcCss4U4fXNYzKcGoBChemmPO1l1c",
     authDomain: "clone-409d0.firebaseapp.com",

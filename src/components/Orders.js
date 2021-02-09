@@ -7,7 +7,7 @@ import Order from './Order';
 function Orders() {
 
     // Access to data layer
-    const [{ basket, user }, dispatch] = useStateValue();
+    const [{ user }] = useStateValue();
     // useState Hook -- Array of orders
     const [orders, setOrders] = useState([]);
 
