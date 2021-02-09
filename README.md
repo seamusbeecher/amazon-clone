@@ -1,28 +1,38 @@
 # amazon-clone
 
+## General info
 This is a fake amazon clone for me to practice my web development skills with.
+	
+## Technologies
+Front-end Technologies:
+* React / react-router-dom
+* React Hooks
+* Axios
+* Moment - For time stamps
+* Material-UI Core/Icons
+API Cloud Function
+* Firebase Functions
+* Express
+* Cors
+* Stripe - For payment processing
 
-Front end dependencies (React.js):
-   "@material-ui/core": "^4.11.2",
-   "@material-ui/icons": "^4.11.2",
-   "@stripe/react-stripe-js": "^1.1.2",
-   "@stripe/stripe-js": "^1.11.0",
-   "@testing-library/jest-dom": "^5.11.6",
-   "@testing-library/react": "^11.2.2",
-   "@testing-library/user-event": "^12.6.0",
-   "axios": "^0.21.1",
-   "firebase": "^8.2.1",
-   "moment": "^2.29.1",
-   "react": "^17.0.1",
-   "react-currency-format": "^1.0.0",
-   "react-dom": "^17.0.1",
-   "react-router-dom": "^5.2.0",
-   "react-scripts": "4.0.1",
-   "web-vitals": "^0.2.4"
-  
-Back end dependencies (Node.js/Express.js):
-   "cors": "^2.8.5",
-   "express": "^4.17.1",
-   "firebase-admin": "^9.2.0",
-   "firebase-functions": "^3.11.0",
-   "stripe": "^8.129.0"
+Database
+* Firebase: Firestore
+* Authentication and Storage
+	
+## Setup
+In order to run for yourself change the following:
+You will also need to set up a new Firestore database and Stripe Test:
+Front-end (React)
+* App.js —> Change the stripe publishable key to your own [https://stripe.com/docs/keys]
+* firebase,js —> Change to your own database keys [https://firebase.google.com/docs/web/setup]
+* axois.js —> Change baseURL to new URL in firestore functions trigger tab
+Back-end (Functions)
+* index.js —> Change Stripe secret key to your own [https://stripe.com/docs/keys]
+* Host this api function on your own firestore 
+To run this project, install it locally using npm:
+
+```
+$ npm install
+$ npm start
+```
