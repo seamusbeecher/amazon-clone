@@ -10,6 +10,7 @@ Front-end Technologies:
 * Axios
 * Moment - For time stamps
 * Material-UI Core/Icons
+
 API Cloud Function
 * Firebase Functions
 * Express
@@ -30,6 +31,7 @@ Front-end (React)
 Back-end (Functions)
 * index.js —> Change Stripe secret key to your own [https://stripe.com/docs/keys]
 * Host this api function on your own firestore 
+
 To run this project, install it locally using npm:
 
 ```
